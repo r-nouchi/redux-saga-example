@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import accountState from "./accountState"; 
+import sampleState from "./sampleState";
 
 export default combineReducers({
-    accountState,
+  sampleState,
 });
