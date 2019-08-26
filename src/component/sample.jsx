@@ -5,6 +5,7 @@ const sample = (props) => (
     <button type="button" onClick={props.onClickTakeButton}>take</button>
     <button type="button" onClick={props.onClickTakeEveryButton}>takeEvery</button>
     <button type="button" onClick={props.onClickTakeLatestButton}>takeLatest</button>
+    <button type="button" onClick={props.onClickDebounceButton}>debounce</button>
   </div>
 )
 

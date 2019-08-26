@@ -4,6 +4,8 @@ export const TAKE_EVERY_SAMPLE_START = "TAKE_EVERY_SAMPLE_START"
 export const TAKE_EVERY_SAMPLE_SUCCESS = "TAKE_EVERY_SAMPLE_SUCCESS"
 export const TAKE_LATEST_SAMPLE_START = "TAKE_LATEST_SAMPLE_START"
 export const TAKE_LATEST_SAMPLE_SUCCESS = "TAKE_LATEST_SAMPLE_SUCCESS"
+export const DEBOUNCE_SAMPLE_START = "DEBOUNCE_SAMPLE_START"
+export const DEBOUNCE_SAMPLE_SUCCESS = "DEBOUNCE_SAMPLE_SUCCESS"
 
 export const takeSampleStart = (count) => ({
   type: TAKE_SAMPLE_START,
@@ -40,6 +42,19 @@ export const takeLatestSampleStart = (count) => ({
 
 export const takeLatestSampleSuccess = () => ({
   type: TAKE_LATEST_SAMPLE_SUCCESS,
+  payload: {
+  }
+})
+
+export const debounceSampleStart = (count) => ({
+  type: DEBOUNCE_SAMPLE_START,
+  payload: {
+    count,
+  }
+})
+
+export const debounceSampleSuccess = () => ({
+  type: DEBOUNCE_SAMPLE_SUCCESS,
   payload: {
   }
 })

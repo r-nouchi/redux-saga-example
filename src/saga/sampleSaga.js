@@ -1,4 +1,11 @@
-import { take, takeEvery, takeLatest, call, put } from 'redux-saga/effects'
+import {
+  take,
+  takeEvery,
+  takeLatest,
+  debounce,
+  call,
+  put
+} from 'redux-saga/effects'
 import {
   TAKE_SAMPLE_START,
   TAKE_EVERY_SAMPLE_START,
@@ -6,6 +13,8 @@ import {
   takeSampleSuccess,
   takeEverySampleSuccess,
   takeLatestSampleSuccess,
+  DEBOUNCE_SAMPLE_START,
+  debounceSampleSuccess,
 } from '../action'
 
 function* handleTakeSampleStart() {
@@ -50,6 +59,20 @@ function* runTakeLatestSampleStart(action) {
   yield put(takeLatestSampleSuccess())
 }
 
+function* handleDebounceSampleStart() {
+  yield debounce(1200, DEBOUNCE_SAMPLE_START, runDebounceSampleStart)
+}
+
+function* runDebounceSampleStart(action) {
+  console.log(`take action ${JSON.stringify(action)}`)
+
+  console.log(`start call ${action.payload.count}`)
+  yield call(sleepAsync, action.payload.count)
+  console.log(`finish call ${action.payload.count}`)
+
+  yield put(debounceSampleSuccess())
+}
+
 const sleepAsync = async (count) => {
   console.log(`start sleepAsync count: ${count}`)
   await new Promise(r => setTimeout(r, 5000))
@@ -60,4 +83,5 @@ export default [
   handleTakeSampleStart,
   handleTakeEverySampleStart,
   handleTakeLatestSampleStart,
+  handleDebounceSampleStart,
 ]

@@ -4,6 +4,7 @@ import {
   takeSampleStart,
   takeEverySampleStart,
   takeLatestSampleStart,
+  debounceSampleStart,
 } from '../action'
 
 const mapStateToProps = (state) => ({
@@ -40,6 +41,16 @@ const mapDispatchToProps = (dispatch) => ({
         clearInterval(interval)
       }
     }, 1000)
+  },
+  onClickDebounceButton: () => {
+    let count = 0
+    const interval = setInterval(() => {
+    dispatch(debounceSampleStart(count))
+      count++
+      if(count >= 6) {
+        clearInterval(interval)
+      }
+    }, 500)
   },
 })
 

@@ -2,12 +2,14 @@ import {
   TAKE_SAMPLE_SUCCESS,
   TAKE_EVERY_SAMPLE_SUCCESS,
   TAKE_LATEST_SAMPLE_SUCCESS,
+  DEBOUNCE_SAMPLE_SUCCESS,
 } from '../action'
 
 const initialState = {
   takeSuccessCount: 0,
   takeEverySuccessCount: 0,
   takeLatestSuccessCount: 0,
+  debounceSuccessCount: 0,
 }
 
 export default (state = initialState, action) => {
@@ -27,6 +29,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         takeLatestSuccessCount: state.takeLatestSuccessCount++,
+      }
+    case DEBOUNCE_SAMPLE_SUCCESS:
+      return {
+        ...state,
+        debounceSuccessCount: state.debounceSuccessCount++,
       }
     default:
       return state
