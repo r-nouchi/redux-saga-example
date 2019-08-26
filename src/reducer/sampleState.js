@@ -2,7 +2,7 @@ import {
   TAKE_SAMPLE_SUCCESS,
   TAKE_EVERY_SAMPLE_SUCCESS,
   TAKE_LATEST_SAMPLE_SUCCESS,
-} from '../action/sampleAction'
+} from '../action'
 
 const initialState = {
   takeSuccessCount: 0,

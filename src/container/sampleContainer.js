@@ -4,7 +4,7 @@ import {
   takeSampleStart,
   takeEverySampleStart,
   takeLatestSampleStart,
-} from '../action/sampleAction'
+} from '../action'
 
 const mapStateToProps = (state) => ({
   sampleState: state.sampleState

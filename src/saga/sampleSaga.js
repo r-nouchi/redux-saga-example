@@ -6,7 +6,7 @@ import {
   takeSampleSuccess,
   takeEverySampleSuccess,
   takeLatestSampleSuccess,
-} from '../action/sampleAction'
+} from '../action'
 
 function* handleTakeSampleStart() {
   while(true) {
