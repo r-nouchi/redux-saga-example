@@ -5,6 +5,7 @@ import {
   takeEverySampleStart,
   takeLatestSampleStart,
   debounceSampleStart,
+  throttleSampleStart,
 } from '../action'
 
 const mapStateToProps = (state) => ({
@@ -41,6 +42,16 @@ const mapDispatchToProps = (dispatch) => ({
         clearInterval(interval)
       }
     }, 1000)
+  },
+  onClickThrottleButton: () => {
+    let count = 0
+    const interval = setInterval(() => {
+    dispatch(throttleSampleStart(count))
+      count++
+      if(count >= 6) {
+        clearInterval(interval)
+      }
+    }, 500)
   },
   onClickDebounceButton: () => {
     let count = 0

@@ -2,6 +2,7 @@ import {
   take,
   takeEvery,
   takeLatest,
+  throttle,
   debounce,
   call,
   put
@@ -15,6 +16,8 @@ import {
   takeLatestSampleSuccess,
   DEBOUNCE_SAMPLE_START,
   debounceSampleSuccess,
+  throttleSampleSuccess,
+  THROTTLE_SAMPLE_START,
 } from '../action'
 
 function* handleTakeSampleStart() {
@@ -59,6 +62,20 @@ function* runTakeLatestSampleStart(action) {
   yield put(takeLatestSampleSuccess())
 }
 
+function* handleThrottleSampleStart() {
+  yield throttle(1800, THROTTLE_SAMPLE_START, runThrottleSampleStart)
+}
+
+function* runThrottleSampleStart(action) {
+  console.log(`take action ${JSON.stringify(action)}`)
+
+  console.log(`start call ${action.payload.count}`)
+  yield call(sleepAsync, action.payload.count)
+  console.log(`finish call ${action.payload.count}`)
+
+  yield put(throttleSampleSuccess())
+}
+
 function* handleDebounceSampleStart() {
   yield debounce(1200, DEBOUNCE_SAMPLE_START, runDebounceSampleStart)
 }
@@ -83,5 +100,6 @@ export default [
   handleTakeSampleStart,
   handleTakeEverySampleStart,
   handleTakeLatestSampleStart,
+  handleThrottleSampleStart,
   handleDebounceSampleStart,
 ]

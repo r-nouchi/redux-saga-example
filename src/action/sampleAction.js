@@ -4,6 +4,8 @@ export const TAKE_EVERY_SAMPLE_START = "TAKE_EVERY_SAMPLE_START"
 export const TAKE_EVERY_SAMPLE_SUCCESS = "TAKE_EVERY_SAMPLE_SUCCESS"
 export const TAKE_LATEST_SAMPLE_START = "TAKE_LATEST_SAMPLE_START"
 export const TAKE_LATEST_SAMPLE_SUCCESS = "TAKE_LATEST_SAMPLE_SUCCESS"
+export const THROTTLE_SAMPLE_START = "THROTTLE_SAMPLE_START"
+export const THROTTLE_SAMPLE_SUCCESS = "THROTTLE_SAMPLE_SUCCESS"
 export const DEBOUNCE_SAMPLE_START = "DEBOUNCE_SAMPLE_START"
 export const DEBOUNCE_SAMPLE_SUCCESS = "DEBOUNCE_SAMPLE_SUCCESS"
 
@@ -42,6 +44,19 @@ export const takeLatestSampleStart = (count) => ({
 
 export const takeLatestSampleSuccess = () => ({
   type: TAKE_LATEST_SAMPLE_SUCCESS,
+  payload: {
+  }
+})
+
+export const throttleSampleStart = (count) => ({
+  type: THROTTLE_SAMPLE_START,
+  payload: {
+    count,
+  }
+})
+
+export const throttleSampleSuccess = () => ({
+  type: THROTTLE_SAMPLE_SUCCESS,
   payload: {
   }
 })
