@@ -6,7 +6,8 @@ import simpleSagaMonitor from "@redux-saga/simple-saga-monitor"
 import mySagaMonitor from "./saga/monitor/sagaMonitor"
 
 // const sagaMiddleware = createSagaMiddleware({sagaMonitor: simpleSagaMonitor})
-const sagaMiddleware = createSagaMiddleware({sagaMonitor: mySagaMonitor})
+// const sagaMiddleware = createSagaMiddleware({sagaMonitor: mySagaMonitor})
+const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(
   rootReducer,
