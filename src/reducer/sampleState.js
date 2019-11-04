@@ -15,7 +15,6 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  console.log(`dispatch action: ${JSON.stringify(action)}`)
   switch(action.type) {
     case TAKE_SAMPLE_SUCCESS:
       return {
